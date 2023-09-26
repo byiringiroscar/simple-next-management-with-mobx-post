@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import store, { type Blog } from "./store";
 import { observer } from "mobx-react-lite";
 import styles from "../styles/Home.module.css";
-
+import Link from "next/link";
 
 
 export async function getServerSideProps() {
@@ -12,7 +12,6 @@ export async function getServerSideProps() {
   );
 
   store.blog = await resp.json();
-  console.log(store.blog)
   return {
     props: {
       initialBlog: store.blog,
@@ -40,7 +39,7 @@ function Home({ initialBlog }: { initialBlog: Blog[] }) {
       </div>
       <div className={styles.container}>
       {store.filteredBlog.map((blog) => (  
-        <a key={blog.id} href="www.google.com">{blog.title}</a>
+        <Link key={blog.id} href={`/${blog.id}`}>{blog.title}</Link>
       ))}
       </div>
     </div>
