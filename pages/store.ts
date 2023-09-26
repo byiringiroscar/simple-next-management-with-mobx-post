@@ -26,10 +26,10 @@ class BlogStore {
           title.toLowerCase().includes(this.filter.toLowerCase())
         );
       }
-      
+
     getBlog(id: number) {
-        return this.blog.find((blog) => blog.id === id);
-    }
+    return this.blog.find((blog) => blog.id === id);
+  }
 }
 
 const store = new BlogStore();
